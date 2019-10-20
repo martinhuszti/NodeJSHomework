@@ -1,6 +1,8 @@
-var express = require('express');
-var app = express();
+let express = require('express');
+let app = express();
 
 app.use(express.static('static'));
-var server = app.listen(3000, function () {
+
+
+let server = app.listen(3000, function () {
 });
