@@ -15,7 +15,7 @@ module.exports = function (app) {
     var objectRepository = {};
 
     /** List all items */
-    app.get('/dashboard',
+    app.use('/dashboard',
         authMW(objectRepository),
         getItemListMW(objectRepository),
         renderMW(objectRepository, 'dashboard')
