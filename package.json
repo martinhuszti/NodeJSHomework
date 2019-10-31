@@ -21,6 +21,9 @@
   },
   "homepage": "https://github.com/martinhuszti/NodeJSHomeWork#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "body-parser": "^1.19.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0"
   }
 }
