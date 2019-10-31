@@ -1,17 +1,7 @@
-<%- include('header') %>
+<%- include('accessories/header') %>
+<%- include('accessories/navbar_in') %>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary"><a class="navbar-brand" href="/dashboard">Bevásárlólista</a>
-            <button aria-controls="responsive-navbar-nav" aria-label="Toggle navigation" class="navbar-toggler"
-                    type="button"><span class="navbar-toggler-icon"></span></button>
-            <div class="justify-content-end navbar-collapse collapse" id="responsive-navbar-nav">
-                <div class="navbar-nav">
-                    <div class="nav-item"><a class="nav-link" data-rb-event-key="#newuser" href="/newuser"> Új
-                        felhasználó felvétele</a></div>
-                    <div class="nav-item"><a class="nav-link" data-rb-event-key="#signout"
-                                             href="/login">Kijelentkezés</a></div>
-                </div>
-            </div>
-        </nav>
+
         <div class="container"><h1 style="margin-top: 1em;"> Regisztráció</h1>
             <form class="">
                 <div class="form-group"><label class="form-label" for="formNickname">Felhasználónév</label><input
@@ -30,5 +20,5 @@
             </form>
             <div class="red-text center"></div>
         </div>
-<%- include('footer') %>
+<%- include('accessories/footer') %>
 
