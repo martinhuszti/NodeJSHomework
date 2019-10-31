@@ -12,7 +12,7 @@ let logoutMW = require('../middleware/generic/Logout');
 module.exports = function (app) {
 
     let objectRepository = {
-        userModel: userModel
+        userModel: "userModel"
     };
 
     /** Main page */

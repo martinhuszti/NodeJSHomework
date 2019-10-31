@@ -1,30 +1,14 @@
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-    <meta content="#000000" name="theme-color">
+<%- include('header') %>
 
-    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
-    <script crossorigin="anonymous"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <title>New user</title>
-</head>
-
-<body>
-<div id="root">
-    <div class="App">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary"><a class="navbar-brand" href="/dashboard.html">Bevásárlólista</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary"><a class="navbar-brand" href="/dashboard">Bevásárlólista</a>
             <button aria-controls="responsive-navbar-nav" aria-label="Toggle navigation" class="navbar-toggler"
                     type="button"><span class="navbar-toggler-icon"></span></button>
             <div class="justify-content-end navbar-collapse collapse" id="responsive-navbar-nav">
                 <div class="navbar-nav">
-                    <div class="nav-item"><a class="nav-link" data-rb-event-key="#newuser" href="/newuser.html"> Új
+                    <div class="nav-item"><a class="nav-link" data-rb-event-key="#newuser" href="/newuser"> Új
                         felhasználó felvétele</a></div>
                     <div class="nav-item"><a class="nav-link" data-rb-event-key="#signout"
-                                             href="/login.html">Kijelentkezés</a></div>
+                                             href="/login">Kijelentkezés</a></div>
                 </div>
             </div>
         </nav>
@@ -46,9 +30,5 @@
             </form>
             <div class="red-text center"></div>
         </div>
-    </div>
-</div>
+<%- include('footer') %>
 
-</body>
-
-</html>
