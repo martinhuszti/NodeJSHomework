@@ -7,6 +7,14 @@
  */
 module.exports = function (objectrepository, archiveBool) {
     return function (req, res, next) {
-        return next();
+        var item = res.data.item;
+        item.isArchived = archiveBool;
+
+        item.save(function (err, result) {
+            if (err) {
+                return next(err);
+            }
+            return res.redirect('/dashboard');
+        });
     };
 };

@@ -3,10 +3,23 @@
  */
 
 /**
- * Get one item
+ * Get one item and put it into res.data.task
  */
+const {requireOption} = require("../requireOptions");
 module.exports = function (objectrepository) {
+    var itemModel = requireOption(objectrepository, 'itemModel');
+
     return function (req, res, next) {
-        return next();
+
+        itemModel.findOne({
+            _id: req.param('itemid')
+        }).exec(function (err, result) {
+            if ((err) || (!result)) {
+                return res.redirect('/dashboard');
+            }
+
+            res.data.item = result;
+            return next();
+        });
     };
 };

@@ -6,11 +6,15 @@ let authMW = require('../middleware/generic/Auth');
 let updateItemtMW = require('../middleware/item/UpdateItem');
 let renderMW = require('../middleware/generic/Render');
 
+let items = require('../models/item');
+let users = require('../models/user');
 
 module.exports = function (app) {
 
-    var objectRepository = {};
-
+    var objectRepository = {
+        itemModel: items,
+        userModel: users
+    };
     /** Render new item form */
     app.get('/newitem',
         authMW(objectRepository),
