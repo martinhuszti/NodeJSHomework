@@ -5,7 +5,6 @@
 let authMW = require('../middleware/generic/Auth');
 let updateItemtMW = require('../middleware/item/UpdateItem');
 let renderMW = require('../middleware/generic/Render');
-let checkUserMW = require('../middleware/user/CheckUser');
 
 
 module.exports = function (app) {

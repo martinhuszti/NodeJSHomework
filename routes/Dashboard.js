@@ -10,10 +10,15 @@ let deleteItemMW = require('../middleware/item/DeleteItem');
 let getItemMW = require('../middleware/item/GetItem');
 let mainRedirectMW = require('../middleware/generic/MainRedirect');
 
+var items = require('../models/item');
+var users = require('../models/user');
 
 module.exports = function (app) {
 
-    var objectRepository = {};
+    var objectRepository = {
+        itemModel: items,
+        userModel: users
+    };
 
     /** List all items */
     app.get('/dashboard',
