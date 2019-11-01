@@ -19,6 +19,13 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+app.use(function (req, res, next) {
+    res.data = {};
+    res.data.error = [];
+
+    return next();
+});
+
 require('./routes/Dashboard')(app);
 require('./routes/NewItem')(app);
 require('./routes/NewUser')(app);

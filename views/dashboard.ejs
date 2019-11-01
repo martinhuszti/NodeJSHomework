@@ -1,31 +1,70 @@
 <%- include('accessories/header') %>
 <%- include('accessories/navbar_in') %>
 
-        <div class="dashboard container" style="margin-top: 1em;">
-            <div class="container">
-                <div class="card card bg-warning text-dark">
-                    <div class="cardHeaderStyle itemCard card-header">
-                        <input type="checkbox">
-                        <span>PopCorn</span>
+<div class="dashboard container" style="margin-top: 1em;">
+    <h3>Aktív</h3>
+
+    <% items.filter(function (i) {
+        return i.isArchived === false
+    }).forEach(function(item){ %>
+        <div class="col-10 card card bg-light text-dark">
+            <div class="cardHeaderStyle itemCard card-header row justify-content-between">
+
+                <div class="col-4">
+
+                    <div>
+                        <span class="font-weight-bolder"><%= item.name %></span>
+                        <span><%= item.quantity %></span>
+                        <span><%= item.measure %></span>
                     </div>
+
+                    <div>
+                        <span class="font-italic"><%= item.comment %></span>
+                    </div>
+
                 </div>
 
-                <div class="card card bg-warning text-dark">
-                    <div class="cardHeaderStyle itemCard card-header">
-                        <input type="checkbox">
-                        <span>Fagyi</span>
-                    </div>
-                </div>
+                <form action="/dashboard/<%= item.id %>/archive" method="post">
+                    <input type="submit" value="Archive" class="btn btn-warning">
+                </form>
 
-                <div class="card card bg-warning text-dark">
-                    <div class="cardHeaderStyle itemCard card-header">
-                        <input type="checkbox">
-                        <span>Kenyér</span>
-                    </div>
-                </div>
             </div>
-            <hr class="divider">
-
         </div>
+        <br/>
+    <% }); %>
+
+    <hr class="divider">
+    <h3>Archivált</h3>
+
+    <% items.filter(function (i) {
+        return i.isArchived === true
+    }).forEach(function(item){ %>
+        <div class="col-10 card card bg-secondary text-dark">
+            <div class="cardHeaderStyle itemCard card-header row justify-content-between">
+
+                <div class="col-4">
+
+                    <div>
+                        <span class="font-weight-bolder text-white"><%= item.name %></span>
+                        <span class="text-white"><%= item.quantity %></span>
+                        <span class="text-white"><%= item.measure %></span>
+                    </div>
+
+                    <div>
+                        <span class="font-italic text-white"><%= item.comment %></span>
+                    </div>
+
+                </div>
+
+                <form action="/dashboard/<%= item.id %>/unarchive" method="post">
+                    <input type="submit" value="Unarchive" class="btn btn-warning">
+                </form>
+
+            </div>
+        </div>
+        <br/>
+    <% }); %>
+
+</div>
 <%- include('accessories/footer') %>
 

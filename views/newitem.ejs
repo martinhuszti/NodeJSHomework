@@ -5,30 +5,24 @@
 <div class="container">
 
     <div class="modal-content">
-        <form class="">
+        <form action="/newitem" method="post">
             <div class="modal-header">
                 <div class="modal-title h4">Új Termék Felvétele</div>
-                <button class="close" type="button"><span aria-hidden="true">×</span><span
-                            class="sr-only">Close</span></button>
             </div>
             <div class="modal-body">
-                <div class="form-group"><label class="form-label active" for="formMit">Mit?</label><input
-                            autocomplete="text" class="form-control" id="formMit" placeholder="Kenyér..."
-                            required=""
-                            type="text"><small class="text-muted form-text">Mit szeretnél venni. Pl.
+                <div class="form-group"><label class="form-label active" for="formMit">Mit?</label>
+                    <input autocomplete="text" class="form-control" id="formMit" placeholder="Kenyér..."
+                           name="name" required=""
+                           type="text"><small class="text-muted form-text">Mit szeretnél venni. Pl.
                         kenyér, vaj stb.</small></div>
                 <div class="form-row">
-                    <div class="form-group col"><label class="form-label"
-                                                       for="formMennyit">Mennyit?</label><input
-                                class="form-control"
-                                id="formMennyit"
-                                placeholder=""
-                                type="number"
-                                value="1"></div>
-                    <div class="form-group col"><label class="form-label"
-                                                       for="fromMeasure">Mérték</label><select
-                                class="form-control"
-                                id="fromMeasure">
+                    <div class="form-group col">
+                        <label class="form-label" for="formMennyit">Mennyit?</label>
+                        <input name="quantity" class="form-control" id="formMennyit" placeholder="" type="number"
+                               value="1"></div>
+                    <div class="form-group col">
+                        <label class="form-label" for="fromMeasure">Mérték</label>
+                        <select name="measure" class="form-control" id="fromMeasure">
                             <option>db</option>
                             <option>kg</option>
                             <option>dkg</option>
@@ -38,19 +32,25 @@
                             <option>ml</option>
                             <option>doboz</option>
                             <option>zacskó</option>
-                        </select></div>
+                        </select>
+                    </div>
                 </div>
-                <div class="form-group"><label class="form-label" for="formDesc">Leírás</label><textarea
-                            class="form-control" id="formDesc" placeholder="Félbarna..." rows="2"></textarea></div>
+                <div class="form-group">
+                    <label class="form-label" for="formDesc">Leírás</label>
+                    <textarea name="comment" class="form-control" id="formDesc" placeholder="Félbarna..."
+                              rows="2"></textarea>
+                </div>
             </div>
+
             <div class="modal-footer">
-                <button class="btn btn-secondary" onclick="window.location.href='/dashboard'"
-                        type="button">Mégsem
+                <button class="btn btn-secondary" onclick="window.location.href='/dashboard'" type="button">
+                    Mégsem
                 </button>
-                <button class="btn btn-primary" onclick="window.location.href='/dashboard'" type="submit">
+                <button class="btn btn-primary" type="submit">
                     Felvesz
                 </button>
             </div>
+
         </form>
     </div>
 

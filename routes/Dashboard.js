@@ -8,6 +8,7 @@ let renderMW = require('../middleware/generic/Render');
 let archiveItemMW = require('../middleware/item/ArchiveItem');
 let deleteItemMW = require('../middleware/item/DeleteItem');
 let getItemMW = require('../middleware/item/GetItem');
+let mainRedirectMW = require('../middleware/generic/MainRedirect');
 
 
 module.exports = function (app) {
@@ -15,7 +16,7 @@ module.exports = function (app) {
     var objectRepository = {};
 
     /** List all items */
-    app.use('/dashboard',
+    app.get('/dashboard',
         authMW(objectRepository),
         getItemListMW(objectRepository),
         renderMW(objectRepository, 'dashboard')
@@ -26,7 +27,7 @@ module.exports = function (app) {
         authMW(objectRepository),
         getItemMW(objectRepository),
         archiveItemMW(objectRepository, true),
-        renderMW(objectRepository, 'dashboard')
+        mainRedirectMW()
     );
 
     /** UnArchive shopping item */
@@ -34,7 +35,7 @@ module.exports = function (app) {
         authMW(objectRepository),
         getItemMW(objectRepository),
         archiveItemMW(objectRepository, false),
-        renderMW(objectRepository, 'dashboard')
+        mainRedirectMW()
     );
 
     /** Delete shopping item */
