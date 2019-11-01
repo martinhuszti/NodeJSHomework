@@ -56,9 +56,17 @@
 
                 </div>
 
-                <form action="/dashboard/<%= item.id %>/unarchive" method="post">
-                    <input type="submit" value="Unarchive" class="btn btn-warning">
-                </form>
+                <div class="row">
+
+                    <form action="/dashboard/<%= item.id %>/unarchive" method="post">
+                        <input type="submit" value="Unarchive" class="btn btn-warning">
+                    </form>
+
+                    <form action="/dashboard/<%= item.id %>/delete" method="POST">
+                        <input type="submit" value="Delete" class="btn btn-danger">
+                    </form>
+
+                </div>
 
             </div>
         </div>

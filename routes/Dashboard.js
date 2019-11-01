@@ -44,7 +44,7 @@ module.exports = function (app) {
     );
 
     /** Delete shopping item */
-    app.delete('/inventory/:itemid/delete',
+    app.post('/dashboard/:itemid/delete',
         authMW(objectRepository),
         getItemMW(objectRepository),
         deleteItemMW(objectRepository),
