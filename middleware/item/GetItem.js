@@ -13,7 +13,7 @@ module.exports = function (objectrepository) {
 
         itemModel.findOne({
             _id: req.param('itemid')
-        }).exec(function (err, result) {
+        }).populate('_createdBy').exec(function (err, result) {
             if ((err) || (!result)) {
                 return res.redirect('/dashboard');
             }

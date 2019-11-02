@@ -24,8 +24,6 @@ module.exports = function (app) {
     /** Creates/ update item */
     app.post('/newitem',
         authMW(objectRepository),
-        updateItemtMW(objectRepository),
-        function (req, res, next) {
-            res.redirect('/dashboard');
-        });
+        updateItemtMW(objectRepository)
+    )
 };

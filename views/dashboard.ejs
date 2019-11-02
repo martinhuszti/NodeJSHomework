@@ -17,6 +17,8 @@
                         <span><%= item.quantity %></span>
                         <span><%= item.measure %></span>
                     </div>
+                    <span><b>Készítette: </b><%= item._createdBy.username %></span>
+
 
                     <div>
                         <span class="font-italic"><%= item.comment %></span>
@@ -49,6 +51,8 @@
                         <span class="text-white"><%= item.quantity %></span>
                         <span class="text-white"><%= item.measure %></span>
                     </div>
+                    <span class="text-white"><b>Készítette: </b><%= item._createdBy.username %></span>
+
 
                     <div>
                         <span class="font-italic text-white"><%= item.comment %></span>

@@ -30,6 +30,7 @@ module.exports = function (objectrepository) {
         item.quantity = req.body.quantity;
         item.measure = req.body.measure;
         item.comment = req.body.comment;
+        item._createdBy = req.session.userid;
         item.isArchived = false;
 
         item.save(function (err, result) {

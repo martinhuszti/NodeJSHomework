@@ -7,10 +7,10 @@ var Item = db.model('Item', {
     measure: String,
     comment: String,
     isArchived: Boolean,
-//    _createdBy: {
-    //      type: Schema.Types.ObjectId,
-    //  ref: 'User'
-    //}
+    _createdBy: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
 });
 
 module.exports = Item;

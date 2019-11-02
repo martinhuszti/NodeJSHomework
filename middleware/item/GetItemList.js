@@ -11,7 +11,7 @@ module.exports = function (objectrepository) {
 
     return function (req, res, next) {
 
-        itemModel.find({}).exec(function (err, results) {
+        itemModel.find({}).populate('_createdBy').exec(function (err, results) {
             if (err) {
                 return next(new Error('Error getting tasks'));
             }
