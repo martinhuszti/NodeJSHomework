@@ -5,7 +5,7 @@
 /**
  * Redirect the user from / to /login or /dashboard based on his signed in status
  */
-module.exports = function (objectrepository) {
+module.exports = function () {
     return function (req, res, next) {
 
         if (typeof req.session.userid === 'undefined') {

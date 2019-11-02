@@ -5,10 +5,13 @@
 let registerUserMW = require('../middleware/user/RegisterUser');
 let renderMW = require('../middleware/generic/Render');
 
+var users = require('../models/user');
 
 module.exports = function (app) {
 
-    var objectRepository = {};
+    var objectRepository = {
+        userModel: users
+    };
 
     /** Render new user form */
     app.get('/newuser',
@@ -17,8 +20,6 @@ module.exports = function (app) {
 
     /** Register new user */
     app.post('/newuser',
-        registerUserMW(objectRepository),
-        function (req, res, next) {
-            res.redirect('/login');
-        });
+        registerUserMW(objectRepository)
+    );
 };

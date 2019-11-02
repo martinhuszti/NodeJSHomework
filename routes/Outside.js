@@ -7,28 +7,31 @@ let inverseAuthMW = require('../middleware/generic/InverseAuth');
 let CheckUserMW = require('../middleware/user/CheckUser');
 let renderMW = require('../middleware/generic/Render');
 let logoutMW = require('../middleware/generic/Logout');
+let getUserMW = require('../middleware/user/GetUser');
+
+var users = require('../models/user');
 
 
 module.exports = function (app) {
 
     let objectRepository = {
-        userModel: "userModel"
+        userModel: users
     };
 
     /** Main page */
     app.get('/',
-        mainRedirectMW(objectRepository)
+        mainRedirectMW()
     );
 
     /** Login page */
     app.get('/login',
         inverseAuthMW(objectRepository),
-        CheckUserMW(objectRepository),
-        renderMW(objectRepository, 'login')
+        renderMW(objectRepository, "login")
     );
 
     app.post('/login',
         inverseAuthMW(objectRepository),
+        getUserMW(objectRepository),
         CheckUserMW(objectRepository),
         mainRedirectMW()
     );
@@ -37,8 +40,9 @@ module.exports = function (app) {
     app.use('/logout',
         logoutMW(objectRepository),
         function (req, res, next) {
-            res.redirect('/');
+            return res.redirect('/login');
         }
     );
+
 
 };
