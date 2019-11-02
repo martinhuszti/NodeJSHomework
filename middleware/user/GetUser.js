@@ -11,12 +11,16 @@ module.exports = function (objectrepository) {
     var userModel = requireOption(objectrepository, 'userModel');
 
     return function (req, res, next) {
+        if (typeof req.body.username === 'undefined' ||
+            req.body.username === ''
+        ) return next();
+
         userModel.findOne({
             username: req.body.username
         }).exec(function (err, result) {
             if ((err) || (!result)) {
-                res.data.error = "Wrong email or password";
-                return res.redirect('/login');
+                res.data.error.push("Rossz username: " + req.body.username);
+                return next()
             }
             res.data.user = result;
             return next();

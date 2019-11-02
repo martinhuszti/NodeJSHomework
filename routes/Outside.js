@@ -24,16 +24,11 @@ module.exports = function (app) {
     );
 
     /** Login page */
-    app.get('/login',
-        inverseAuthMW(objectRepository),
-        renderMW(objectRepository, "login")
-    );
-
-    app.post('/login',
+    app.use('/login',
         inverseAuthMW(objectRepository),
         getUserMW(objectRepository),
         CheckUserMW(objectRepository),
-        mainRedirectMW()
+        renderMW(objectRepository, "login")
     );
 
     /** Logout */
