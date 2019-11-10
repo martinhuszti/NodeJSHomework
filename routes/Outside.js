@@ -8,6 +8,7 @@ let CheckUserMW = require('../middleware/user/CheckUser');
 let renderMW = require('../middleware/generic/Render');
 let logoutMW = require('../middleware/generic/Logout');
 let getUserMW = require('../middleware/user/GetUser');
+let forgetPasswordMW = require('../middleware/user/ForgotPassword');
 
 var users = require('../models/user');
 
@@ -37,6 +38,12 @@ module.exports = function (app) {
         function (req, res, next) {
             return res.redirect('/login');
         }
+    );
+    /** Logout */
+    app.use('/forgetpassword',
+        getUserMW(objectRepository),
+        forgetPasswordMW(objectRepository),
+        renderMW(objectRepository, "login")
     );
 
 
