@@ -10,20 +10,17 @@
         <div class="col-10 card card bg-light text-dark">
             <div class="cardHeaderStyle itemCard card-header row justify-content-between">
 
-                <div class="col-4">
-
+                <div class="col-8">
                     <div>
                         <span class="font-weight-bolder"><%= item.name %></span>
                         <span><%= item.quantity %></span>
                         <span><%= item.measure %></span>
                     </div>
-                    <span><b>Készítette: </b><%= item._createdBy.username %></span>
-
-
                     <div>
-                        <span class="font-italic"><%= item.comment %></span>
+                        <span class="font-italic text-white"><%= item.comment %></span>
                     </div>
-
+                    <br>
+                    <span><b>Készítette: </b><%= item._createdBy.username %>  (<%= item.updated %>)</span>
                 </div>
 
                 <form action="/dashboard/<%= item.id %>/archive" method="post">
@@ -44,20 +41,17 @@
         <div class="col-10 card card bg-secondary text-dark">
             <div class="cardHeaderStyle itemCard card-header row justify-content-between">
 
-                <div class="col-4">
-
+                <div class="col-8">
                     <div>
                         <span class="font-weight-bolder text-white"><%= item.name %></span>
                         <span class="text-white"><%= item.quantity %></span>
                         <span class="text-white"><%= item.measure %></span>
                     </div>
-                    <span class="text-white"><b>Készítette: </b><%= item._createdBy.username %></span>
-
-
                     <div>
                         <span class="font-italic text-white"><%= item.comment %></span>
                     </div>
-
+                    <br>
+                    <span class="text-white"><b>Készítette: </b><%= item._createdBy.username %>  (<%= item.updated %>)</span>
                 </div>
 
                 <div class="row">
