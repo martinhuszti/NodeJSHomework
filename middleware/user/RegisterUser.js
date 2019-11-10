@@ -11,7 +11,9 @@ module.exports = function (objectrepository) {
     var userModel = requireOption(objectrepository, 'userModel');
 
     return function (req, res, next) {
-        if ((typeof req.body.username === 'undefined') ||
+        if (
+            (typeof req.body === 'undefined') ||
+            (typeof req.body.username === 'undefined') ||
             (typeof req.body.password === 'undefined')
         ) {
             return next();
