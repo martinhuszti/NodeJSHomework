@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var getUserRegistrationMW = require('../../../middleware/user/RegisterUser');
+var registerUser = require('../../../middleware/user/RegisterUser');
 
 describe('getUserRegistration middleware ', function () {
 
@@ -14,7 +14,7 @@ describe('getUserRegistration middleware ', function () {
                 }
             };
 
-            getUserRegistrationMW({
+            registerUser({
                 userModel: fakeUserModel
             })({}, {}, function (err) {
                 expect(nehivd).to.be.eql(false);
@@ -38,7 +38,7 @@ describe('getUserRegistration middleware ', function () {
                 }
             };
 
-            getUserRegistrationMW({
+            registerUser({
                 userModel: fakeUserModel
             })(req, {}, function (err) {
                 expect(nehivd).to.be.eql(false);
@@ -62,7 +62,7 @@ describe('getUserRegistration middleware ', function () {
                 }
             };
 
-            getUserRegistrationMW({
+            registerUser({
                 userModel: fakeUserModel
             })(req, {}, function (err) {
                 expect(nehivd).to.eql(false);
@@ -100,7 +100,7 @@ describe('getUserRegistration middleware ', function () {
             return cb(undefined);
         };
 
-        getUserRegistrationMW({
+        registerUser({
             userModel: fakeUserModel
         })(req, res, function (err) {
             expect(true).to.eql(false);
@@ -129,7 +129,7 @@ describe('getUserRegistration middleware ', function () {
             return cb(undefined, null);
         };
 
-        getUserRegistrationMW({
+        registerUser({
             userModel: fakeUserModel
         })(req, res, function (err) {
             expect(res.data.error.length).to.be.above(0);
@@ -159,7 +159,7 @@ describe('getUserRegistration middleware ', function () {
             return cb(undefined, true);
         };
 
-        getUserRegistrationMW({
+        registerUser({
             userModel: fakeUserModel
         })(req, res, function (err) {
             expect(res.data.error.length).to.be.above(0);
