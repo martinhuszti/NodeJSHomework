@@ -17,7 +17,7 @@ describe('getUserRegistration middleware ', function () {
             getUserRegistrationMW({
                 userModel: fakeUserModel
             })({}, {}, function (err) {
-                expect(nehivd).to.eql(false);
+                expect(nehivd).to.be.eql(false);
                 expect(err).to.eql(undefined);
                 done();
             });
@@ -26,7 +26,7 @@ describe('getUserRegistration middleware ', function () {
         it('no password parameter is given', function (done) {
             var req = {
                 body: {
-                    name: 'mynamedsa'
+                    username: 'lorem@ipsum.com'
                 }
             };
             var nehivd = false;
@@ -47,7 +47,7 @@ describe('getUserRegistration middleware ', function () {
             });
         });
 
-        it('no email parameter is given', function (done) {
+        it('no username  parameter is given', function (done) {
             var req = {
                 body: {
                     password: 'boo'
@@ -65,7 +65,7 @@ describe('getUserRegistration middleware ', function () {
             getUserRegistrationMW({
                 userModel: fakeUserModel
             })(req, {}, function (err) {
-                expect(nehivd).to.be.eql(false);
+                expect(nehivd).to.eql(false);
                 expect(err).to.eql(undefined);
                 done();
             });
@@ -76,8 +76,8 @@ describe('getUserRegistration middleware ', function () {
     it('should register new user if everything is ok', function (done) {
         var req = {
             body: {
-                password: 'ewewewweew',
-                username: 'ewewewew'
+                password: 'boo',
+                username: 'valami@at.hu'
             }
         };
 
@@ -108,4 +108,63 @@ describe('getUserRegistration middleware ', function () {
         });
     });
 
+    it('should return error when username is less then 2 characters', function (done) {
+        var req = {
+            body: {
+                password: 'boo',
+                username: 'bo'
+            }
+        };
+
+        var res = {
+            data: {
+                error: []
+            }
+        };
+
+        var fakeUserModel = function () {
+        };
+
+        fakeUserModel.findOne = function (some, cb) {
+            return cb(undefined, null);
+        };
+
+        getUserRegistrationMW({
+            userModel: fakeUserModel
+        })(req, res, function (err) {
+            expect(res.data.error.length).to.be.above(0);
+            expect(err).to.eql(undefined);
+            done();
+        });
+    });
+
+    it('should return error when db returns error', function (done) {
+        var req = {
+            body: {
+                password: 'boo',
+                username: 'bo'
+            }
+        };
+
+        var res = {
+            data: {
+                error: []
+            }
+        };
+
+        var fakeUserModel = function () {
+        };
+
+        fakeUserModel.findOne = function (some, cb) {
+            return cb(undefined, true);
+        };
+
+        getUserRegistrationMW({
+            userModel: fakeUserModel
+        })(req, res, function (err) {
+            expect(res.data.error.length).to.be.above(0);
+            expect(err).to.eql(undefined);
+            done();
+        });
+    });
 });
