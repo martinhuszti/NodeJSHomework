@@ -63,3 +63,4 @@ typings/
 
 # configFile
 middleware/config/urlstring.js
+.DS_Store
